@@ -32,9 +32,10 @@ namespace SupportApp.Tests
             var controller = new SupportRequestController();
             string customerName = "John Doe";
             string description = "Need help with product";
+            var dueDate = DateTime.Now.ToString();
 
             // Act
-            var result = controller.AddRequest(customerName, description);
+            var result = controller.AddRequest(customerName, description, dueDate);
 
             // Assert
             var redirectToActionResult = Assert.IsType<RedirectToActionResult>(result);
@@ -46,7 +47,7 @@ namespace SupportApp.Tests
         {
             // Arrange
             var controller = new SupportRequestController();
-            controller.AddRequest("John Doe", "Need help with product");
+            controller.AddRequest("John Doe", "Need help with product", "2024-09-05 16:00");
             int requestId = 1;
 
             // Act
