@@ -1,0 +1,13 @@
+ @model SupportApp.Models.SupportRequest
+ 
+ <li class="request-item" data-id="@Model.Id">
+    <span>@Model.CustomerName: @Model.Description</span>
+    @if (!Model.IsResolved)
+    {
+        <button class="resolve-button" data-id="@Model.Id">Resolve</button>
+    }
+    else
+    {
+        <span> (Resolved)</span>
+    }
+</li>

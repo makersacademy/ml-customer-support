@@ -1,3 +1,5 @@
+@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,20 +13,19 @@
         <input type="text" name="description" placeholder="Description" required />
         <button type="submit">Add Request</button>
     </form>
+
+    <form id="filterRequests">
+            <select id="filter">
+                <option value="1">All</option>
+                <option value="2">Resolved</option>
+                <option value="3">Unresolved</option>
+            </select>
+    </form>
+
     <ul id="requestList">
         @foreach (var request in Model)
         {
-            <li class="request-item" data-id="@request.Id">
-                <span>@request.CustomerName: @request.Description</span>
-                @if (!request.IsResolved)
-                {
-                    <button class="resolve-button" data-id="@request.Id">Resolve</button>
-                }
-                else
-                {
-                    <span> (Resolved)</span>
-                }
-            </li>
+            @{Html.RenderPartial("SupportRequestItem", request)};
         }
     </ul>
 
@@ -43,6 +44,18 @@
                             '</li>';
                         $('#requestList').prepend(newItem);
                         $('#addRequestForm')[0].reset();
+                    }
+                });
+            });
+
+        $('#filter').change(function(e) {   
+                e.preventDefault();
+                $.ajax({
+                    url: '/SupportRequest/FilterRequest',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        // TODO: render returned HTML into the #requestList element
                     }
                 });
             });
