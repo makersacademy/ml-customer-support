@@ -4,6 +4,7 @@ using SupportApp.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using System.Text.Json;
 
 namespace SupportApp.Tests
 {
@@ -41,6 +42,22 @@ namespace SupportApp.Tests
             Assert.Equal("Index", redirectToActionResult.ActionName);
         }
 
+        [Fact]
+        public void AddRequest_AddsNewRequest_AndIncrementsRequestNumber()
+        {
+            // Arrange
+            var controller = new SupportRequestController();
+            string customerName = "John Doe";
+            string description = "Need help with product";
+
+            // Act
+            var viewResult = controller.AddRequest(customerName, description) as ViewResult;
+            var request = viewResult?.ViewData.Model as SupportRequest;
+
+            // Assert
+            Assert.Equal(request.Id, 1);
+        }
+        
         [Fact]
         public void ResolveRequest_ResolvesRequest_AndRedirectsToIndex()
         {
