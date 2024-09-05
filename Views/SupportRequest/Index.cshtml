@@ -9,6 +9,7 @@
     <form id="addRequestForm">
         <input type="text" name="customerName" placeholder="Customer Name" required />
         <input type="text" name="description" placeholder="Description" required />
+        <input type="text" name="notes" placeholder="Notes" />
         <button type="submit">Add Request</button>
     </form>
     <ul id="requestList">
@@ -16,6 +17,7 @@
         {
             <li class="request-item" data-id="@request.Id">
                 <span>@request.CustomerName: @request.Description</span>
+                <input type="text" disabled name="notes" value="@request.Notes"/>
                 @if (!request.IsResolved)
                 {
                     <button class="resolve-button" data-id="@request.Id">Resolve</button>
@@ -39,6 +41,7 @@
                     success: function(response) {
                         var newItem = '<li class="request-item" data-id="' + response.id + '">' +
                             '<span>' + response.customerName + ': ' + response.description + '</span>' +
+                            '<input type="text" disabled value="' + response.notes + '"/>' +
                             '<button class="resolve-button" data-id="' + response.id + '">Resolve</button>' +
                             '</li>';
                         $('#requestList').prepend(newItem);

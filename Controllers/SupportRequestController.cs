@@ -15,14 +15,15 @@ namespace SupportApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddRequest(string customerName, string description)
+        public IActionResult AddRequest(string customerName, string description, string? notes)
         {
             var newRequest = new SupportRequest 
             { 
                 Id = requests.Count + 1, 
                 CustomerName = customerName, 
                 Description = description, 
-                IsResolved = false 
+                IsResolved = false,
+                Notes = notes
             };
             requests.Insert(0, newRequest); // Insert at the beginning of the list
             return Json(newRequest); // Return JSON instead of redirecting
