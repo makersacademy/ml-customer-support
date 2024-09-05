@@ -9,6 +9,7 @@
     <form id="addRequestForm">
         <input type="text" name="customerName" placeholder="Customer Name" required />
         <input type="text" name="description" placeholder="Description" required />
+        <input type="datetime" name="dueDate" placeholder="Due Date" required />
         <button type="submit">Add Request</button>
     </form>
     <ul id="requestList">
@@ -16,6 +17,16 @@
         {
             <li class="request-item" data-id="@request.Id">
                 <span>@request.CustomerName: @request.Description</span>
+                
+                @if (!request.IsDueDatePast)
+                {
+                    <span>@request.DueDate</span>
+                }
+                else
+                {
+                    <span style="color:red">@request.DueDate</span>
+                }
+
                 @if (!request.IsResolved)
                 {
                     <button class="resolve-button" data-id="@request.Id">Resolve</button>
@@ -24,6 +35,7 @@
                 {
                     <span> (Resolved)</span>
                 }
+
             </li>
         }
     </ul>
@@ -37,12 +49,7 @@
                     type: 'POST',
                     data: $(this).serialize(),
                     success: function(response) {
-                        var newItem = '<li class="request-item" data-id="' + response.id + '">' +
-                            '<span>' + response.customerName + ': ' + response.description + '</span>' +
-                            '<button class="resolve-button" data-id="' + response.id + '">Resolve</button>' +
-                            '</li>';
-                        $('#requestList').prepend(newItem);
-                        $('#addRequestForm')[0].reset();
+                        renderSupportRequest(response);
                     }
                 });
             });
@@ -62,6 +69,22 @@
                 });
             });
         });
+
+        function renderSupportRequest(response) {
+            var newItem = '<li class="request-item" data-id="' + response.id + '">' +
+                          '<span>' + response.customerName + ': ' + response.description + '</span>';
+            
+            if (response.IsDueDatePast === false) {
+                newItem += '<span>' + response.dueDate + '</span>'
+            } else {
+                newItem += '<span style="color:red">' + response.dueDate + '</span>'
+            }
+                          
+            newItem += '<button class="resolve-button" data-id="' + response.id + '">Resolve</button>' +
+                          '</li>';
+                        $('#requestList').prepend(newItem);
+                        $('#addRequestForm')[0].reset();
+        }
     </script>
 </body>
 </html>
