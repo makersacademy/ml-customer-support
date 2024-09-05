@@ -29,6 +29,7 @@
     </ul>
 
     <script>
+    var soundObject = null;
         $(document).ready(function() {
             $('#addRequestForm').submit(function(e) {
                 e.preventDefault();
@@ -56,12 +57,27 @@
                     success: function(response) {
                         if (response.success) {
                             var $item = $('.request-item[data-id="' + response.id + '"]');
+                            PlaySound();
                             $item.find('.resolve-button').replaceWith('<span> (Resolved)</span>');
                         }
                     }
                 });
             });
         });
+
+        
+        function PlaySound() {
+            if (soundObject != null) {
+                document.body.removeChild(soundObject);
+                soundObject.removed = true;
+                soundObject = null;
+            }
+            soundObject = document.createElement("embed");
+            soundObject.setAttribute("src", "sounds/sample.wav");
+            soundObject.setAttribute("hidden", true);
+            soundObject.setAttribute("autostart", true);
+            document.body.appendChild(soundObject);
+        }
     </script>
 </body>
 </html>
