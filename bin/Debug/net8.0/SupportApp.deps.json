@@ -9,6 +9,7 @@
       "SupportApp/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "8.0.0",
+          "StyleCop.Analyzers": "1.1.118",
           "xunit": "2.9.0",
           "xunit.runner.visualstudio": "2.8.2"
         },
@@ -61,6 +62,7 @@
           }
         }
       },
+      "StyleCop.Analyzers/1.1.118": {},
       "xunit/2.9.0": {
         "dependencies": {
           "xunit.analyzers": "1.15.0",
@@ -156,6 +158,13 @@
       "sha512": "sha512-QYFyxhaABwmq3p/21VrZNYvCg3DaEoN/wUuw5nmfAf0X3HLjgupwhkEWdgfb9nvGAUIv3osmZoD3kKl4jxEmYQ==",
       "path": "newtonsoft.json.bson/1.0.2",
       "hashPath": "newtonsoft.json.bson.1.0.2.nupkg.sha512"
+    },
+    "StyleCop.Analyzers/1.1.118": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Onx6ovGSqXSK07n/0eM3ZusiNdB6cIlJdabQhWGgJp3Vooy9AaLS/tigeybOJAobqbtggTamoWndz72JscZBvw==",
+      "path": "stylecop.analyzers/1.1.118",
+      "hashPath": "stylecop.analyzers.1.1.118.nupkg.sha512"
     },
     "xunit/2.9.0": {
       "type": "package",
