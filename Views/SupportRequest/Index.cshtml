@@ -9,13 +9,19 @@
     <form id="addRequestForm">
         <input type="text" name="customerName" placeholder="Customer Name" required />
         <input type="text" name="description" placeholder="Description" required />
+        <select name="urgency" required>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            <option value="Apocolypse">Apocolypse</option>
+        </select>
         <button type="submit">Add Request</button>
     </form>
     <ul id="requestList">
         @foreach (var request in Model)
         {
             <li class="request-item" data-id="@request.Id">
-                <span>@request.CustomerName: @request.Description</span>
+            <span>@request.CustomerName: @request.Description @request.UrgencyIcon </span>
                 @if (!request.IsResolved)
                 {
                     <button class="resolve-button" data-id="@request.Id">Resolve</button>

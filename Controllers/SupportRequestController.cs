@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SupportApp.Models;
+using SupportApp.Enums;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,13 +16,14 @@ namespace SupportApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddRequest(string customerName, string description)
+        public IActionResult AddRequest(string customerName, string description, Urgency urgency)
         {
             var newRequest = new SupportRequest 
             { 
                 Id = requests.Count + 1, 
                 CustomerName = customerName, 
                 Description = description, 
+                Urgency = urgency,
                 IsResolved = false 
             };
             requests.Insert(0, newRequest); // Insert at the beginning of the list
