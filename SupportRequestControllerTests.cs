@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SupportApp.Controllers;
 using SupportApp.Models;
+using SupportApp.Enums;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -34,7 +35,7 @@ namespace SupportApp.Tests
             string description = "Need help with product";
 
             // Act
-            var result = controller.AddRequest(customerName, description);
+            var result = controller.AddRequest(customerName, description, Urgency.Low);
 
             // Assert
             var redirectToActionResult = Assert.IsType<RedirectToActionResult>(result);
@@ -46,7 +47,7 @@ namespace SupportApp.Tests
         {
             // Arrange
             var controller = new SupportRequestController();
-            controller.AddRequest("John Doe", "Need help with product");
+            controller.AddRequest("John Doe", "Need help with product", Urgency.Low);
             int requestId = 1;
 
             // Act
