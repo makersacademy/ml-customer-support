@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3AqSuGUvZvLp8BMtCYaDUNw9+0X+H7LF5mYVu435nTw=",
+  "Hash": "rL46p7dGm+uuXYEgo4lbd4EBXmX+fR2a5LygjF7HgAM=",
   "Source": "SupportApp",
   "BasePath": "_content/SupportApp",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "SupportApp/wwwroot",
       "Source": "SupportApp",
-      "ContentRoot": "/Users/sean/Desktop/dev/customer-support/wwwroot/",
+      "ContentRoot": "/Users/makers2/ml-customer-support/wwwroot/",
       "BasePath": "_content/SupportApp",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "/Users/sean/Desktop/dev/customer-support/wwwroot/js/site.js",
+      "Identity": "/Users/makers2/ml-customer-support/wwwroot/js/site.js",
       "SourceId": "SupportApp",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/sean/Desktop/dev/customer-support/wwwroot/",
+      "ContentRoot": "/Users/makers2/ml-customer-support/wwwroot/",
       "BasePath": "_content/SupportApp",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
