@@ -29,6 +29,23 @@ namespace SupportApp.Controllers
         }
 
         [HttpPost]
+        public IActionResult FilterRequest(int filter)
+        {
+            switch (filter)
+            {
+                case 1:
+                    return View(requests);
+                case 2:
+                    return View(requests.Where(r => r.IsResolved));
+                case 3:
+                    return View(requests.Where(r => !r.IsResolved));
+                default:
+                    throw new Exception("Undefined filter type");
+            };
+        }
+    
+
+        [HttpPost]
         public IActionResult ResolveRequest(int id)
         {
             var request = requests.FirstOrDefault(r => r.Id == id);

@@ -21,3 +21,7 @@ build_property._RazorSourceGeneratorDebug =
 [/Users/makers1/ml-customer-support/Views/SupportRequest/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3VwcG9ydFJlcXVlc3QvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/makers1/ml-customer-support/Views/SupportRequest/SupportRequestItem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3VwcG9ydFJlcXVlc3QvU3VwcG9ydFJlcXVlc3RJdGVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
