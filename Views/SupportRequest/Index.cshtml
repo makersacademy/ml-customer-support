@@ -41,7 +41,8 @@
                     success: function(response) {
                         var newItem = '<li class="request-item" data-id="' + response.id + '">' +
                             '<span>' + response.customerName + ': ' + response.description + '</span>' +
-                            '<input type="text" disabled value="' + response.notes + '"/>' +
+                            '<input class="note" type="text" disabled data-id="' + response.id + '" value="' + response.notes + '"/>' +
+                            '<button class="edit-note-button" data-id="' + response.id + '">Edit Note</button>' +
                             '<button class="resolve-button" data-id="' + response.id + '">Resolve</button>' +
                             '</li>';
                         $('#requestList').prepend(newItem);
@@ -60,6 +61,21 @@
                         if (response.success) {
                             var $item = $('.request-item[data-id="' + response.id + '"]');
                             $item.find('.resolve-button').replaceWith('<span> (Resolved)</span>');
+                        }
+                    }
+                });
+            });
+
+            $(document).on('click', '.edit-note-button', function() {
+                var id = $(this).data('id');
+
+                $.ajax({
+                    url: '/SupportRequest/EditNote',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function(response) {
+                        if (response.success) {
+                            var $item = $('.note[data-id="' + response.id + '"]');
                         }
                     }
                 });
